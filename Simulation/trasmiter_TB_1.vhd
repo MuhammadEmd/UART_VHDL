@@ -46,7 +46,7 @@ architecture Behavioral of trasmiter_TB_1 is
         
     port(
        data_in_p        : in STD_LOGIC_VECTOR (data_in_num - 1 downto 0);
-       clk_br           : in std_logic;
+       --clk_br           : in std_logic;
        clk              : in std_logic;
        input_data_valid : in std_logic;
        reset            : in std_logic;
@@ -54,7 +54,7 @@ architecture Behavioral of trasmiter_TB_1 is
     end component;
 
 signal data_in_p        : STD_LOGIC_VECTOR (8 - 1 downto 0);
-signal clk_br           : std_logic;
+--signal clk_br           : std_logic;
 signal clk              : std_logic;
 signal input_data_valid : std_logic;
 signal reset           : std_logic;
@@ -76,7 +76,7 @@ uut: transmitter generic map(
                     
                  port map(
                     data_in_p           => data_in_p,
-                    clk_br              => clk_br,
+                    --clk_br              => clk_br,
                     clk                 => clk,
                     input_data_valid    => input_data_valid,
                     reset               => reset,
@@ -88,7 +88,7 @@ stimulus: process
     wait for 20ns;
     reset <= '0';
     input_data_valid <= '0';
-    wait for 25ns;
+    wait for 8ns;
     
     input_data_valid <= '1';
     data_in_p <= "01010111";
@@ -119,14 +119,14 @@ clocking: process
         wait;
     end process;                
                 
-baud_rate: process
-    begin
-        while not stop_the_clock loop
-            clk_br <= '0', '1' after clock_br_period/2 ;
-            wait for clock_br_period;
-        end loop;
-        wait;
-    end process; 
+--baud_rate: process
+--    begin
+--        while not stop_the_clock loop
+--            clk_br <= '0', '1' after clock_br_period/2 ;
+--            wait for clock_br_period;
+--        end loop;
+--        wait;
+--    end process; 
 
                
 end Behavioral;

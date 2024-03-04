@@ -99,6 +99,17 @@ stimulus: process
     
     wait for 25ns;
     
+    wait for 350us;
+    
+    input_data_valid <= '1';
+    data_in_p <= "01010101";
+    
+    wait for clock_period ;
+    wait for 3ns;
+    input_data_valid <= '0';  
+    
+    wait for 25ns;
+    
 --    input_data_valid <= '1';
 --    data_in_p <= "01000111";
     
